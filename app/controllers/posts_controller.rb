@@ -6,13 +6,17 @@ class PostsController < ApplicationController
   end
 
   def new
+    @post = Post.new
   end
 
   def create
     @post = Post.new(post_params)
-    @post.save
-
-    redirect_to @post
+    if @post.save
+      redirect_to @post
+    else
+      p @post.errors.any?
+      render 'new', status: :unprocessable_entity
+    end
   end
 
   def show
