@@ -230,7 +230,12 @@
          text-decoration: none;
        }
      }
-   }
+     #error_explanation {
+       h2: {
+         color: red;
+       }
+     }
+    }
    .links {
      margin: 2em 0;
    }
@@ -262,3 +267,5 @@
      }
    }
  }
+
+div[1]/h2
