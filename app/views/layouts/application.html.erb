@@ -19,8 +19,6 @@
         <li><%= link_to "Posts", root_path%></li>
         <li><%= link_to 'About', about_path %></li>
       </ul>
-
-      <p class="sign_in">User Login</p>
     </div	>
 
     <div id="main_content">
@@ -34,8 +32,12 @@
         <% end %>
 
         <div class="buttons">
-          <button class="button"><%= link_to "Make post", new_post_path %></button>
-          <button class="button">Log out</button>
+          <% if user_signed_in? %>
+            <button class="button"><%= link_to "Make post", new_post_path %></button>
+            <button class="button"><%= link_to 'Log out', destroy_user_session_path, data: { turbo_method: :delete } %></button>
+          <% else %>
+            <button class="button"><%= link_to 'Login', new_user_session_path %></button>
+          <% end %>
         </div>
       </div>
 
